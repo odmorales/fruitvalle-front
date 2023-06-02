@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(usuNombre, usuPass)
       .subscribe(resp => {
         if ( resp.ok !== false ) {
-          this.router.navigate(['/user/cliente/consultar-cliente']);
+          this.router.navigate(['/modules/proveedor']);
         }else {
           Swal.fire('Error', resp.error, 'error');
         }
