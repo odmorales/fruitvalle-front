@@ -10,7 +10,6 @@ export class AuthService {
 
   private baseUrl: string = "http://localhost:5001/api/auth";
   private _usuario!: Usuario;
-
   private prueba!: any;
 
   get usuario() {
@@ -27,7 +26,6 @@ export class AuthService {
         tap(resp => {
           localStorage.setItem('token', resp.token);
           this.prueba = resp
-          console.log(this.prueba);
         }),
         catchError(error => of(error))
       );

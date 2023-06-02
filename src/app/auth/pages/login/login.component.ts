@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidarService } from 'src/app/shared/services/validar.service';
 import { AuthService } from '../../services/auth.service';
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         if ( resp.ok !== false ) {
           this.router.navigate(['/user/cliente/consultar-cliente']);
         }else {
-          // Swal.fire('Error', resp.error, 'error');
+          Swal.fire('Error', resp.error, 'error');
         }
       });
   }

@@ -1,0 +1,59 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav="matSidenav" color="primary">
+      <mat-toolbar class="toolbar-sidenav">
+          <span>Modules</span>
+
+          <span class="spacer"></span>
+
+          <button mat-icon-button (click)="sidenav.toggle()">
+              <mat-icon class="material-icons md-18">close</mat-icon>
+          </button>
+      </mat-toolbar>
+
+      <div class="mt-5">
+        <mat-selection-list [multiple]="false" (click)="cerrarSidenav()">
+          <mat-list-option class="texto-blanco" routerLink="proveedor" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <span class="texto-blanco">Proveedores</span>
+          </mat-list-option>
+          <mat-list-option class="texto-blanco" routerLink="proveedor">
+            <span class="texto-blanco">Ventas</span>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+<mat-toolbar class="mat-elevation-z8">
+  <button *ngIf="!sidenav.opened" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="spacer"></span>
+
+  <div fxLayout="row"
+      fxLayoutGap="10px"
+      fxLayoutAlign="center center">
+      <h3>{{ 'Administrador'| titlecase}}</h3>
+      <mat-icon>admin_panel_settings</mat-icon>
+      <div fxLayout="row"
+      fxLayoutGap="40px">
+
+      <div fxFlex>
+          <button mat-icon-button
+              (click)="logout()">
+              <mat-icon>logout</mat-icon>
+          </button>
+      </div>
+  </div>
+  </div>
+</mat-toolbar>
+
+      <div fxLayout="row" fxLayoutAlign="center">
+          <div fxFlex="95" [style.margin]="'30px 0'">
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
