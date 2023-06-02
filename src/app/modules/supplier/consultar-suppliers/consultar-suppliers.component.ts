@@ -29,7 +29,7 @@ export class ConsultarSupplier implements OnInit{
 
   ngOnInit(): void {
     this.suplierService.get().subscribe((supplier: Supplier[]) => {
-      // this.dataSource = supplier;
+      this.dataSource = supplier;
     });
   }
 

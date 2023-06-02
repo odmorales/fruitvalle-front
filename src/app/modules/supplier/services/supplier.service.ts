@@ -8,12 +8,12 @@ import { Supplier } from '../../classes/supplier';
 })
 export class SupplierService {
 
-  baseUrl: string = '';
+  baseUrl: string = 'http://localhost:3000/api/supplier';
 
   constructor(private http: HttpClient) { }
 
   get() {
-    return this.http.get<Supplier[]>(`${ this.baseUrl }/Supplier`)
+    return this.http.get<Supplier[]>(`${ this.baseUrl }`)
       .pipe(
         map(resp => {
           return resp;
@@ -23,7 +23,7 @@ export class SupplierService {
   }
 
   post(supplier: Supplier) {
-    return this.http.post<Supplier>(`${ this.baseUrl }/Supplier`, supplier)
+    return this.http.post<Supplier>(`${ this.baseUrl }`, supplier)
       .pipe(
         map(resp => {
           return resp;

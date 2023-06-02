@@ -15,30 +15,30 @@
 
           <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>Nombres</mat-label>
-            <input matInput type="text" placeholder="Nombres" formControlName="nombre"
+            <input matInput type="text" placeholder="Nombres" formControlName="name"
               [errorStateMatcher]="validarService.matcher">
-            <mat-error *ngIf="validarService.campoEsValido('nombre')">
-              {{validarService.getMensaje('nombre')}}
+            <mat-error *ngIf="validarService.campoEsValido('name')">
+              {{validarService.getMensaje('name')}}
             </mat-error>
 
           </mat-form-field>
 
           <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>Direccion</mat-label>
-            <input matInput type="text" placeholder="Direccion" formControlName="direccion"
+            <input matInput type="text" placeholder="Direccion" formControlName="address"
               [errorStateMatcher]="validarService.matcher">
-            <mat-error *ngIf="validarService.campoEsValido('direccion')">
-              {{validarService.getMensaje('direccion')}}
+            <mat-error *ngIf="validarService.campoEsValido('address')">
+              {{validarService.getMensaje('address')}}
             </mat-error>
 
           </mat-form-field>
 
           <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>Telefono</mat-label>
-            <input matInput type="text" placeholder="Telefono" formControlName="telefono"
+            <input matInput type="text" placeholder="Telefono" formControlName="phone"
               [errorStateMatcher]="validarService.matcher">
-            <mat-error *ngIf="validarService.campoEsValido('telefono')">
-              {{validarService.getMensaje('telefono')}}
+            <mat-error *ngIf="validarService.campoEsValido('phone')">
+              {{validarService.getMensaje('phone')}}
             </mat-error>
 
           </mat-form-field>
@@ -60,10 +60,10 @@
 
           <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>Pais de origen</mat-label>
-            <input matInput type="text" placeholder="Pais origen" formControlName="lugar_origen"
+            <input matInput type="text" placeholder="Pais origen" formControlName="originPlace"
               [errorStateMatcher]="validarService.matcher">
-            <mat-error *ngIf="validarService.campoEsValido('lugar_origen')">
-              {{validarService.getMensaje('lugar_origen')}}
+            <mat-error *ngIf="validarService.campoEsValido('originPlace')">
+              {{validarService.getMensaje('originPlace')}}
             </mat-error>
 
           </mat-form-field>

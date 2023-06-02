@@ -24,7 +24,9 @@ export class AuthService {
     return this.http.post<any>( `${this.baseUrl}/login`, body )
       .pipe(
         tap(resp => {
-          localStorage.setItem('token', resp.token);
+          console.log(resp)
+          localStorage.setItem('token', resp.body.accessToken);
+
           this.prueba = resp
         }),
         catchError(error => of(error))

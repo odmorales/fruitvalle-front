@@ -16,18 +16,18 @@ export class SupplierComponent {
   suppliers!: Supplier[];
 
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['', Validators.required],
-    direccion: ['', Validators.required],
-    telefono: ['', Validators.required],
+    name: ['', Validators.required],
+    address: ['', Validators.required],
+    phone: ['', Validators.required],
     email: ['', Validators.required],
-    lugar_origen: ['', Validators.required],
-    fecha_desvinculacion: [''],
-    fecha_vinculacion: [''],
+    originPlace: ['', Validators.required],
+    bindingDate: [''],
+    terminationDate: [''],
   });
 
   constructor(
     private fb: FormBuilder,
-    // private suppilerService: SupplierService,
+    private suppilerService: SupplierService,
     public validarService: ValidarService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -41,13 +41,13 @@ export class SupplierComponent {
     this.suplier = this.miFormulario.value;
     console.log(this.suplier);
     this.router.navigate(['/modules/consultar-proveedor']);
-    // this.suppilerService.post(this.suplier).subscribe((resp) => {
-    //   if (resp.ok !== false) {
-    //     Swal.fire('Proveedor guardado correctamente', resp.error, 'success');
-    //     this.miFormulario.reset();
-    //   } else {
-    //     Swal.fire('Error', resp.error, 'error');
-    //   }
-    // });
+      this.suppilerService.post(this.suplier).subscribe((resp) => {
+        if (resp.ok !== false) {
+          Swal.fire('Proveedor guardado correctamente', resp.error, 'success');
+          this.miFormulario.reset();
+        } else {
+          Swal.fire('Error', resp.error, 'error');
+        }
+      });
   }
 }

@@ -9,7 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CarruselComponent } from './home/components/carrusel/carrusel.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/services/token.interseptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,13 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
