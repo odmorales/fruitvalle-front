@@ -40,14 +40,15 @@ export class SupplierComponent {
     }
     this.suplier = this.miFormulario.value;
     console.log(this.suplier);
-    this.router.navigate(['/modules/consultar-proveedor']);
-      this.suppilerService.post(this.suplier).subscribe((resp) => {
-        if (resp.ok !== false) {
-          Swal.fire('Proveedor guardado correctamente', resp.error, 'success');
-          this.miFormulario.reset();
-        } else {
-          Swal.fire('Error', resp.error, 'error');
-        }
-      });
+
+    this.suppilerService.post(this.suplier).subscribe((resp) => {
+      if (resp.ok !== false) {
+        Swal.fire('Proveedor guardado correctamente', resp.error, 'success');
+        console.log(resp);
+        this.router.navigate(['/modules/consultar-proveedor']);
+      } else {
+        Swal.fire('Error', resp.error, 'error');
+      }
+    });
   }
 }
