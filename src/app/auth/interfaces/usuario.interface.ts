@@ -1,6 +1,16 @@
 export interface Usuario {
-    usuNombre: string;
-    usuPass: string;
-    rol: string;
-    token: string;
+    username: string;
+    password: string;
+    userType: string;
+    email: string;
+    name: string;
+    position?: string;
+    phone?: string;
+    lastname: string;
+}
+
+export interface UsuarioResponse {
+  username: string;
+  userType: string;
+  email: string;
 }

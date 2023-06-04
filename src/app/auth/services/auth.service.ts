@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { Usuario } from '../interfaces/usuario.interface';
+import { UsuarioResponse } from '../interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,10 @@ import { Usuario } from '../interfaces/usuario.interface';
 export class AuthService {
 
   private baseUrl: string = "http://localhost:5001/api/auth";
-  private _usuario!: Usuario;
-  private prueba!: any;
+  private _usuario!: UsuarioResponse;
 
   get usuario() {
-    return { ...this._usuario };
+    return this._usuario;
   }
 
   constructor(private http: HttpClient) { }
@@ -24,10 +23,10 @@ export class AuthService {
     return this.http.post<any>( `${this.baseUrl}/login`, body )
       .pipe(
         tap(resp => {
-          console.log(resp)
           localStorage.setItem('token', resp.body.accessToken);
 
-          this.prueba = resp
+          const token = JSON.parse(atob((resp.body.accessToken as string).split('.')[1]));
+          this._usuario = token.data;
         }),
         catchError(error => of(error))
       );
@@ -35,7 +34,7 @@ export class AuthService {
 
   validarToken(): Observable<boolean> {
 
-    return this.http.get<Usuario>(`${this.baseUrl}/Login/RenovarToken`)
+    return this.http.get<any>(`${this.baseUrl}/Login/RenovarToken`)
       .pipe(
         map(resp => {
           localStorage.setItem('token', resp.token);

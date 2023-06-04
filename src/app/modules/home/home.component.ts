@@ -4,6 +4,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { delay } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { UsuarioResponse } from 'src/app/auth/interfaces/usuario.interface';
 
 @Component({
   selector: 'app-home',
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
 
   sticky: boolean = false;
   cambiar: boolean = true;
+  userName!: UsuarioResponse;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -55,6 +57,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.userName = this.authService.usuario;
+
     this.breakpointObserver
       .observe([
         Breakpoints.Medium,

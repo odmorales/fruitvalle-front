@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { MaterialModule } from '../design/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserRegisterComponent } from './pages/user-register/user-register.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    UserRegisterComponent
   ],
   imports: [
     CommonModule,
