@@ -10,9 +10,18 @@ export class AuthService {
 
   private baseUrl: string = "http://localhost:5001/api/auth";
   private _usuario!: UsuarioResponse;
+  private _userRoles: string[] = [];
 
   get usuario() {
+    const token = JSON.parse(atob((localStorage.getItem('token') as string).split('.')[1]));
+    this._usuario = token.data;
     return this._usuario;
+  }
+
+  get userRoles(){
+    const token = JSON.parse(atob((localStorage.getItem('token') as string).split('.')[1]));
+    this._userRoles.push(token.data.userType);
+    return this._userRoles;
   }
 
   constructor(private http: HttpClient) { }
@@ -24,9 +33,6 @@ export class AuthService {
       .pipe(
         tap(resp => {
           localStorage.setItem('token', resp.body.accessToken);
-
-          const token = JSON.parse(atob((resp.body.accessToken as string).split('.')[1]));
-          this._usuario = token.data;
         }),
         catchError(error => of(error))
       );
