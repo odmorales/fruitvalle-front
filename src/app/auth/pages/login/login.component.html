@@ -1,7 +1,7 @@
-<div fxLayout="row" 
+<div fxLayout="row"
     fxLayoutAlign="center center"
     [style.height]="'70vh'">
-    <mat-card class="mat-elevation-z4" 
+    <mat-card class="mat-elevation-z4"
         fxFlex="25"
         fxFlex.lt-md="50"
         fxFlex.lt-sm="100"
@@ -9,10 +9,10 @@
         fxLayoutGap="70px"
         [style.padding]="'45px'"
         [style.margin]="'10px'">
-        <mat-card-title fxLayoutAlign="center center"> 
+        <mat-card-title fxLayoutAlign="center center">
               <mat-icon>people_alt</mat-icon>
         </mat-card-title>
-    
+
         <mat-card-content>
             <form (ngSubmit)="login()" [formGroup]="miFormulario" autocomplete="off">
                 <div fxLayout="column">
@@ -21,7 +21,7 @@
                         <input matInput type="text" placeholder="Usuario" formControlName="usuNombre">
                         <mat-error *ngIf="validarService.campoEsValido('usuNombre')">{{validarService.getMensaje('usuNombre')}}</mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field appearance="outline" fxFlex="100">
                         <mat-label>Contraseña</mat-label>
                         <input matInput type="password" placeholder="Contraseña" formControlName="usuPass">
@@ -29,13 +29,22 @@
                     </mat-form-field>
 
                     <div fxLayoutAlign="center center" fxFlex="100">
-                        <button type="submit" 
-                            mat-raised-button 
+                        <button type="submit"
+                            mat-raised-button
                             color="primary"
                             fxFlex="100">
                             Entrar
                         </button>
                     </div>
+                    <br>
+                    <div fxLayoutAlign="center center" fxFlex="100">
+                      <button (click)="goRegister($event)"
+                          mat-raised-button
+                          color="primary"
+                          fxFlex="100">
+                          Registrar
+                      </button>
+                  </div>
                 </div>
 
             </form>

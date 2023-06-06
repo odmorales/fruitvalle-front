@@ -29,6 +29,11 @@ export class LoginComponent implements OnInit {
 
   }
 
+  goRegister(event: any){
+    event.preventDefault();
+    this.router.navigate(['/auth/registrar']);
+  }
+
   login() {
     if(this.miFormulario.invalid){
       this.miFormulario.markAllAsTouched();
